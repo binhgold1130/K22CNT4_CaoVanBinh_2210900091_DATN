@@ -1,0 +1,24 @@
+~ start_seed_shop
+
+Rương Thần Kỳ: Chào nông dân trẻ! Ta nhận thu mua Gỗ và Đá đổi lấy Hạt giống xịn đây.
+- Đổi Hạt Ngô (Cần 2 Gỗ)
+	if InventoryManager.get_item_count("log") >= 2
+		Marlow: Cho tao 1 hạt ngô đi.
+		# Đã đổi số 1 thành số 2 để trừ 2 Gỗ
+		do GameDialogueManager.buy_seed("corn_seed", 2) 
+		Rương Thần Kỳ: Chúc cậu mùa màng bội thu!
+	else
+		Marlow: Chết dở, trong túi không đủ 2 khúc gỗ rồi...
+		Rương Thần Kỳ: Bao giờ chặt đủ Gỗ thì quay lại đây nhé!
+- Đổi Hạt Cà chua (Cần 2 Đá)
+	if InventoryManager.get_item_count("stone") >= 2
+		Marlow: Đổi cho tao 1 hạt cà chua nhé.
+		# Đã đổi số 1 thành số 2 để trừ 2 Đá
+		do GameDialogueManager.buy_seed("tomato_seed", 2)
+		Rương Thần Kỳ: Hàng của cậu đây!
+	else
+		Marlow: Nhẵn túi rồi, tao phải vác cuốc đi đập đá đã.
+- Không đổi đâu, cảm ơn
+	Marlow: Tao đi dạo chút đã, lúc khác quay lại.
+
+=> END

@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dfpfichbh08r3"]
+
+[ext_resource type="PackedScene" uid="uid://pbgp25bp7xyg" path="res://scenes/ui/tools_panel.tscn" id="1_8hmcv"]
+[ext_resource type="Theme" uid="uid://bw54haedy0sv4" path="res://scenes/ui/game_ui_theme.tres" id="1_e2vrk"]
+[ext_resource type="PackedScene" uid="uid://07uxyhb57l7r" path="res://scenes/ui/inventory_panel.tscn" id="3_gusqm"]
+[ext_resource type="PackedScene" uid="uid://1kav6u327krt" path="res://scenes/ui/day_and_night_panel.tscn" id="4_gkbp4"]
+[ext_resource type="PackedScene" uid="uid://dpvno1n4vud8e" path="res://scenes/ui/emotes_panel.tscn" id="5_0kkfd"]
+
+[node name="GameScreen" type="CanvasLayer" unique_id=1328112757]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1788969415]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_e2vrk")
+
+[node name="ToolsPanel" parent="MarginContainer" unique_id=1576751293 instance=ExtResource("1_8hmcv")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_type_variation = &"DarkWoodPanel"
+
+[node name="DayAndNightPanel" parent="MarginContainer" unique_id=744631580 instance=ExtResource("4_gkbp4")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=892310188]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="EmotesPanel" parent="MarginContainer/VBoxContainer" unique_id=466511541 instance=ExtResource("5_0kkfd")]
+layout_mode = 2
+
+[node name="InventoryPanel" parent="MarginContainer/VBoxContainer" unique_id=1493264018 instance=ExtResource("3_gusqm")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_type_variation = &"DarkWoodPanel"
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1665921116]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_e2vrk")
+theme_type_variation = &"GameMenuButton"
+text = "⚙️"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SettingsButton" to="MarginContainer/ToolsPanel" method="_on_settings_button_pressed"]

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://br55k4cex22bo"
+path="res://.godot/imported/guide.dialogue-1165591db1fd2cfd5df212d0097ac1a7.tres"
+
+[deps]
+
+source_file="res://scenes/characters/guide/guide.dialogue"
+dest_files=["res://.godot/imported/guide.dialogue-1165591db1fd2cfd5df212d0097ac1a7.tres"]
+
+[params]
+
+defaults=true

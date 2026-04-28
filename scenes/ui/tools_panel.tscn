@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://pbgp25bp7xyg"]
+
+[ext_resource type="Theme" uid="uid://bw54haedy0sv4" path="res://scenes/ui/game_ui_theme.tres" id="1_2yiqu"]
+[ext_resource type="Script" uid="uid://w071cydrcmcp" path="res://scenes/ui/tools_panel.gd" id="2_0jxvs"]
+[ext_resource type="Texture2D" uid="uid://diilmmh55g1bh" path="res://assets/game/Objects/Basic tools and meterials.png" id="2_xkgdf"]
+[ext_resource type="Texture2D" uid="uid://drka0gmhs4ugh" path="res://assets/game/Objects/Basic Plants.png" id="3_a7ivs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7ivs"]
+atlas = ExtResource("2_xkgdf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0jxvs"]
+load_path = "res://.godot/imported/Basic tools and meterials.png-142a2741e2ff11d1b9f8bd8b192017f2.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbtgy"]
+atlas = SubResource("CompressedTexture2D_0jxvs")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xkgdf"]
+load_path = "res://.godot/imported/Basic tools and meterials.png-142a2741e2ff11d1b9f8bd8b192017f2.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jxvs"]
+atlas = SubResource("CompressedTexture2D_xkgdf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6726"]
+atlas = ExtResource("3_a7ivs")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a7ivs"]
+load_path = "res://.godot/imported/Basic Plants.png-ff4131ac3d69e882c0ead6fb3ce1d2dc.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3neg6"]
+atlas = SubResource("CompressedTexture2D_a7ivs")
+region = Rect2(0, 16, 16, 16)
+
+[node name="ToolsPanel" type="PanelContainer" unique_id=1576751293]
+offset_left = -1.0
+offset_right = 45.0
+offset_bottom = 46.0
+theme = ExtResource("1_2yiqu")
+script = ExtResource("2_0jxvs")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1640101580]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1037941737]
+layout_mode = 2
+
+[node name="ToolAxe" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1891514549]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_type_variation = &"ToolButton"
+icon = SubResource("AtlasTexture_a7ivs")
+
+[node name="ToolTilling" type="Button" parent="MarginContainer/HBoxContainer" unique_id=109910066]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_type_variation = &"ToolButton"
+icon = SubResource("AtlasTexture_gbtgy")
+
+[node name="ToolWateringCan" type="Button" parent="MarginContainer/HBoxContainer" unique_id=677508693]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_type_variation = &"ToolButton"
+icon = SubResource("AtlasTexture_0jxvs")
+
+[node name="ToolCorn" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1538852797]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_type_variation = &"ToolButton"
+icon = SubResource("AtlasTexture_a6726")
+
+[node name="CornLabel" type="Label" parent="MarginContainer/HBoxContainer/ToolCorn" unique_id=1596389509]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -10.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_type_variation = &"InventoryLabel"
+text = "0"
+
+[node name="ToolTomato" type="Button" parent="MarginContainer/HBoxContainer" unique_id=657628837]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_type_variation = &"ToolButton"
+icon = SubResource("AtlasTexture_3neg6")
+
+[node name="TomatoLabel" type="Label" parent="MarginContainer/HBoxContainer/ToolTomato" unique_id=1513279908]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -10.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_type_variation = &"InventoryLabel"
+text = "0"

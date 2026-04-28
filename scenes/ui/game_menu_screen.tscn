@@ -1,0 +1,204 @@
+[gd_scene format=3 uid="uid://6g3s7evpf60q"]
+
+[ext_resource type="Theme" uid="uid://bw54haedy0sv4" path="res://scenes/ui/game_ui_theme.tres" id="1_5slcd"]
+[ext_resource type="PackedScene" uid="uid://cfusaadjfo5x6" path="res://scenes/ui/game_menu_screen_background.tscn" id="1_arotu"]
+[ext_resource type="Script" uid="uid://bjtjbkeiht1w2" path="res://scenes/ui/game_menu_screen.gd" id="1_l5nq4"]
+
+[sub_resource type="FontVariation" id="FontVariation_jk4o3"]
+
+[sub_resource type="FontVariation" id="FontVariation_l5nq4"]
+
+[node name="GameMenuScreen" type="CanvasLayer" unique_id=906376683]
+script = ExtResource("1_l5nq4")
+
+[node name="GameMenuScreenBackground" parent="." unique_id=840495299 instance=ExtResource("1_arotu")]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1940771196]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5slcd")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer" unique_id=1440145885]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer" unique_id=1631529647]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.23921569, 0.7529412, 0.23921569, 1)
+theme_override_colors/font_shadow_color = Color(0.4045111, 0.40451115, 0.4045111, 0)
+theme_override_colors/font_outline_color = Color(1, 0.5921505, 0.8912245, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 54
+text = "Farm Life"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=344903736]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="StartGameButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=722142072]
+custom_minimum_size = Vector2(100, 29)
+layout_mode = 2
+theme_type_variation = &"GameMenuButton"
+text = "Chơi Mới "
+
+[node name="SaveGameButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1768994122]
+custom_minimum_size = Vector2(100, 29)
+layout_mode = 2
+theme_type_variation = &"GameMenuButton"
+text = "Tiếp Tục"
+
+[node name="ExitGameButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=454276721]
+custom_minimum_size = Vector2(100, 29)
+layout_mode = 2
+theme_type_variation = &"GameMenuButton"
+text = "Thoát Game "
+
+[node name="GuideButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=683573667]
+custom_minimum_size = Vector2(100, 29)
+layout_mode = 2
+theme_type_variation = &"GameMenuButton"
+text = "Hướng Dẫn"
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1298427923]
+custom_minimum_size = Vector2(100, 29)
+layout_mode = 2
+theme_type_variation = &"GameMenuButton"
+text = "Cài Đặt"
+
+[node name="GuidePanel" type="Panel" parent="." unique_id=1768414321]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 87.0
+offset_top = 51.0
+offset_right = -80.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_5slcd")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GuidePanel" unique_id=795960267]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/scroll_hint_vertical_color = Color(0.76156104, 0.76156086, 0.761561, 1)
+theme_override_colors/scroll_hint_horizontal_color = Color(0.6550534, 0.6550533, 0.65505326, 1)
+horizontal_scroll_mode = 3
+
+[node name="Label" type="Label" parent="GuidePanel/ScrollContainer" unique_id=723187310]
+modulate = Color(0.8329021, 0.83290213, 0.83290213, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_5slcd")
+theme_type_variation = &"GameMenuButton"
+theme_override_colors/font_color = Color(1, 0.972549, 0.90588236, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0.16470589, 0.10980392, 0.078431375, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = SubResource("FontVariation_jk4o3")
+theme_override_font_sizes/font_size = 16
+text = "🌾 CHÀO MỪNG ĐẾN VỚI FARM LIFE! 🌾
+Hãy bắt đầu xây dựng nông trại trong mơ của bạn nhé!
+
+🕹️ ĐIỀU KHIỂN CƠ BẢN:
+- W, A, S, D hoặc Phím Mũi Tên: Di chuyển nhân vật.
+- Phím E: Tương tác (Nói chuyện với NPC, mở rương,...).
+- Phím Esc: Mở Menu Cài Đặt khi đang chơi.
+
+🛠️ CÔNG CỤ & TRỒNG TRỌT:
+- Phím 1 đến 5 (Hoặc Lăn Chuột): Chọn công cụ (Rìu, Cuốc, Bình tưới, Hạt giống...).
+- Chuột Trái: Sử dụng công cụ (Chặt cây, cuốc đất, gieo hạt...).
+- Ctrl + Chuột Trái: Xóa ô đất đã cuốc.
+
+🐔 CHĂN NUÔI & THU HOẠCH:
+- Rương thần kỳ: Nằm ngay cạnh chuồng gà và chuồng bò. Hãy bấm [E] để mở rương thần kỳ ở đây bạn sẽ thấy có bất ngờ đó.
+- Mẹo: Đừng quên tưới nước cho cây trồng mỗi ngày để chúng mau lớn!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="CloseGuideButton" type="Button" parent="GuidePanel" unique_id=1423274165]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -32.0
+offset_right = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_type_variation = &"GameMenuButton"
+text = "Đóng"
+
+[node name="SettingsPanel" type="VBoxContainer" parent="." unique_id=1038783779]
+visible = false
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -107.5
+offset_right = 100.0
+offset_bottom = 107.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="SettingsPanel" unique_id=1195156229]
+layout_mode = 2
+theme = ExtResource("1_5slcd")
+theme_type_variation = &"GameMenuButton"
+text = "--- CÀI ĐẶT ---"
+horizontal_alignment = 1
+
+[node name="FullscreenCheck" type="CheckBox" parent="SettingsPanel" unique_id=43126098]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_5slcd")
+theme_type_variation = &"GameMenuButton"
+text = "Toàn màn hình"
+alignment = 1
+
+[node name="ResolutionOption" type="OptionButton" parent="SettingsPanel" unique_id=1869319672]
+layout_mode = 2
+theme = ExtResource("1_5slcd")
+theme_type_variation = &"GameMenuButton"
+alignment = 1
+
+[node name="Label2" type="Label" parent="SettingsPanel" unique_id=870377080]
+layout_mode = 2
+theme = ExtResource("1_5slcd")
+theme_type_variation = &"GameMenuButton"
+theme_override_fonts/font = SubResource("FontVariation_l5nq4")
+text = "Âm lượng tổng"
+horizontal_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsPanel" unique_id=149762422]
+modulate = Color(0.78431374, 0.60784316, 0.42352942, 1)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="BackButton" type="Button" parent="SettingsPanel" unique_id=1212456990]
+layout_mode = 2
+theme = ExtResource("1_5slcd")
+theme_type_variation = &"GameMenuButton"
+text = "Quay lại"

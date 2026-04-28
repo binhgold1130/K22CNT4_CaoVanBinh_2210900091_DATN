@@ -1,0 +1,29 @@
+~ start_cow_pasture_box
+
+Rương Thần Kỳ: Bầy bò của cậu đang đói meo rồi kìa. Muốn cho chúng ăn không? (Cần 1 Cà chua)
+- Có
+	# Kiểm tra xem trong túi có ít nhất 1 Cà chua không
+	if InventoryManager.get_item_count("tomato") >= 1
+		Marlow: Được rồi, ăn đi mấy đứa!
+		do GameDialogueManager.feed_animals("cow")
+	else
+		Marlow: Chết dở, trong túi không còn quả Cà chua nào rồi! Tụi mày nhịn tạm nhé...
+- Không
+	Marlow: Thôi, để lúc khác tao cho ăn.
+
+=> END
+
+~ start_chicken_pasture_box
+
+Rương Thần Kỳ: Đàn gà đang kêu râm ran. Muốn cho chúng ăn không? (Cần 1 Ngô)
+- Có
+	# Kiểm tra xem trong túi có ít nhất 1 Ngô không
+	if InventoryManager.get_item_count("corn") >= 1
+		Marlow: Tới giờ ăn rồi, ra đây mấy đứa!
+		do GameDialogueManager.feed_animals("chicken")
+	else
+		Marlow: Ơ kìa, hết sạch Ngô rồi. Tí nữa tao đi cày thêm vậy.
+- Không
+	Marlow: Tạm thời nhịn nhé, tao đang bận chút việc.
+
+=> END

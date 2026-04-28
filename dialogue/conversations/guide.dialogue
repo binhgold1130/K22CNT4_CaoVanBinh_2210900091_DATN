@@ -1,0 +1,30 @@
+~ start
+
+# Sử dụng Manager để lấy buổi trong ngày
+if GameDialogueManager.get_time_period() == "Sáng"
+	Lão Nông: Chào buổi sáng! Thung Lũng Gió hôm nay trông thật trong lành.
+elif GameDialogueManager.get_time_period() == "Chiều"
+	Lão Nông: Chào buổi chiều! Cậu đã làm việc vất vả cả ngày rồi nhỉ?
+else
+	Lão Nông: Chào buổi tối! Đêm xuống ở nông trại có vẻ hơi vắng vẻ cậu nhỉ?
+
+Lão Nông: Ta là Trưởng làng ở đây. Thấy cậu có vẻ rành rọt cách dùng nông cụ rồi, ta cũng mừng.
+Lão Nông: Nếu lỡ có quên cách điều khiển, cậu cứ việc mở [Hướng Dẫn] trên góc màn hình ra xem lại nhé!
+
+~ menu_cau_hoi
+
+- Lão có hạt giống nào cho cháu khởi nghiệp không?
+	Lão Nông: Khà khà, thanh niên thời nay đi thẳng vào vấn đề thật. Nhưng muốn có hạt giống vậy cậu phải tìm rương thần kỳ để trao đổi rồii
+	Lão Nông: Nhớ cuốc đất, gieo hạt rồi tưới nước mỗi ngày. Khi nào hết thì cứ chặt gỗ đem ra [Rương Thần Kỳ] đổi lấy hạt mới nhé!
+	=> menu_cau_hoi 
+	
+- Cháu thấy mấy cái rương quanh làng, chúng để làm gì vậy?
+	Lão Nông: Đó là những [Rương Thần Kỳ] của khu này. Cái rương đứng một mình thì để đổi hạt giống.
+	Lão Nông: Còn những cái rương nằm sát chuồng gà, chuồng bò là máng ăn thần kỳ. 
+	Lão Nông: Cậu cứ bỏ đồ ăn vào đó (Ngô cho Gà, Cà chua cho Bò). Cho ăn đều đặn thì chúng mới đẻ Trứng và vắt được Sữa đấy!
+	=> menu_cau_hoi 
+	
+- Cháu đi làm việc tiếp đây, cảm ơn lão!
+	Lão Nông: Tốt lắm! Chúc cậu sớm biến nơi này thành trang trại trù phú nhất vùng.
+	Lão Nông: Cứ bắt tay vào làm đi, rảnh rỗi lại ra đây đàm đạo với lão!
+	=> END

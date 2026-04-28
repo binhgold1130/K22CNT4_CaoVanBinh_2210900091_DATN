@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b6iwyd5pg3fob"
+path="res://.godot/imported/seed_shop.dialogue-d7e56719d600b592eee46bd36735d31b.tres"
+
+[deps]
+
+source_file="res://dialogue/conversations/seed_shop.dialogue"
+dest_files=["res://.godot/imported/seed_shop.dialogue-d7e56719d600b592eee46bd36735d31b.tres"]
+
+[params]
+
+defaults=true

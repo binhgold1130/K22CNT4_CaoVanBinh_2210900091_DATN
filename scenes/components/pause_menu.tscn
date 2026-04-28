@@ -1,0 +1,181 @@
+[gd_scene format=3 uid="uid://dyowdrctxx2oy"]
+
+[ext_resource type="Script" uid="uid://bhg7wdvn8s6l4" path="res://scenes/components/pause_menu.gd" id="1_ipk8x"]
+[ext_resource type="Theme" uid="uid://bw54haedy0sv4" path="res://scenes/ui/game_ui_theme.tres" id="2_044se"]
+
+[sub_resource type="FontVariation" id="FontVariation_044se"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_letb1"]
+load_path = "res://.godot/imported/basic_ui_sprites.png-f1365ff47f1f008f610f3c558cf47256.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdfba"]
+atlas = SubResource("CompressedTexture2D_letb1")
+region = Rect2(11, 155, 26, 28)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pwfsp"]
+texture = SubResource("AtlasTexture_hdfba")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(0, 0, 26, 28)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yvm41"]
+load_path = "res://.godot/imported/basic_ui_sprites.png-f1365ff47f1f008f610f3c558cf47256.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_migq4"]
+atlas = SubResource("CompressedTexture2D_yvm41")
+region = Rect2(11, 59, 26, 28)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7cou7"]
+texture = SubResource("AtlasTexture_migq4")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(0, 0, 26, 28)
+
+[sub_resource type="FontVariation" id="FontVariation_letb1"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=2011110732]
+process_mode = 3
+script = ExtResource("1_ipk8x")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1820918260]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1197778327]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -50.5
+offset_right = 180.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MainPanel" type="VBoxContainer" parent="CenterContainer" unique_id=2058061575]
+layout_mode = 2
+theme = ExtResource("2_044se")
+
+[node name="ResumeButton" type="Button" parent="CenterContainer/MainPanel" unique_id=1637666376]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+theme = ExtResource("2_044se")
+theme_type_variation = &"GameMenuButton"
+theme_override_font_sizes/font_size = 18
+text = "Tiếp Tục Chơi"
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/MainPanel" unique_id=1988572113]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+theme = ExtResource("2_044se")
+theme_type_variation = &"GameMenuButton"
+theme_override_font_sizes/font_size = 18
+text = "Cài Đặt"
+
+[node name="ExitButton" type="Button" parent="CenterContainer/MainPanel" unique_id=1071339655]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+theme = ExtResource("2_044se")
+theme_type_variation = &"GameMenuButton"
+theme_override_font_sizes/font_size = 18
+text = "Thoát Game"
+
+[node name="ConfirmPanel" type="VBoxContainer" parent="CenterContainer" unique_id=1387121085]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/ConfirmPanel" unique_id=175553048]
+layout_mode = 2
+theme = ExtResource("2_044se")
+theme_type_variation = &"GameMenuButton"
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = SubResource("FontVariation_044se")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pwfsp")
+theme_override_styles/focus = SubResource("StyleBoxTexture_7cou7")
+text = "Bạn có muốn lưu game trước khi thoát không?"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/ConfirmPanel" unique_id=2113166731]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_044se")
+
+[node name="SaveExitButton" type="Button" parent="CenterContainer/ConfirmPanel/HBoxContainer" unique_id=1171499693]
+layout_mode = 2
+theme = ExtResource("2_044se")
+theme_type_variation = &"GameMenuButton"
+text = "Lưu & Thoát"
+
+[node name="JustExitButton" type="Button" parent="CenterContainer/ConfirmPanel/HBoxContainer" unique_id=706800973]
+layout_mode = 2
+theme = ExtResource("2_044se")
+theme_type_variation = &"GameMenuButton"
+text = "Thoát Luôn"
+
+[node name="CancelButton" type="Button" parent="CenterContainer/ConfirmPanel/HBoxContainer" unique_id=154413941]
+layout_mode = 2
+theme = ExtResource("2_044se")
+theme_type_variation = &"GameMenuButton"
+text = "Hủy"
+
+[node name="SettingsPanel" type="VBoxContainer" parent="CenterContainer" unique_id=921705]
+visible = false
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="CenterContainer/SettingsPanel" unique_id=472309882]
+layout_mode = 2
+theme = ExtResource("2_044se")
+theme_type_variation = &"GameMenuButton"
+text = "--- CÀI ĐẶT ---"
+horizontal_alignment = 1
+
+[node name="FullscreenCheck" type="CheckBox" parent="CenterContainer/SettingsPanel" unique_id=1365929404]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_044se")
+theme_type_variation = &"GameMenuButton"
+text = "Toàn màn hình"
+alignment = 1
+
+[node name="ResolutionOption" type="OptionButton" parent="CenterContainer/SettingsPanel" unique_id=1253511584]
+layout_mode = 2
+theme = ExtResource("2_044se")
+theme_type_variation = &"GameMenuButton"
+alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/SettingsPanel" unique_id=1247644003]
+layout_mode = 2
+theme = ExtResource("2_044se")
+theme_type_variation = &"GameMenuButton"
+theme_override_fonts/font = SubResource("FontVariation_letb1")
+text = "Âm lượng tổng"
+horizontal_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="CenterContainer/SettingsPanel" unique_id=656113684]
+modulate = Color(0.78431374, 0.60784316, 0.42352942, 1)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="BackButton" type="Button" parent="CenterContainer/SettingsPanel" unique_id=957860452]
+layout_mode = 2
+theme = ExtResource("2_044se")
+theme_type_variation = &"GameMenuButton"
+text = "Quay lại"
