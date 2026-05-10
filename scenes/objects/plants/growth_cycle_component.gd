@@ -3,7 +3,7 @@ extends Node
 
 # 1. Khai báo các biến thiết lập
 @export var current_growth_state: DataTypes.GrowthStates = DataTypes.GrowthStates.Seed # Trạng thái bắt đầu
-@export_range(1, 365) var days_until_harvest: int = 3 # Số ngày TƯỚI NƯỚC cần thiết để thu hoạch
+@export_range(1, 365) var days_until_harvest: int = 5 
 
 # Tín hiệu phát ra khi chuyển giai đoạn
 signal crop_maturity    # Báo hiệu cây đã ra trái/hoa (Đã lớn)

@@ -75,6 +75,7 @@ frame = 3
 frame_progress = 0.31056398
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1866110887]
+visible = false
 position = Vector2(-1, -4)
 shape = SubResource("CircleShape2D_r6a33")
 

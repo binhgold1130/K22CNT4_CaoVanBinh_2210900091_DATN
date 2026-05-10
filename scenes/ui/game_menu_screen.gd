@@ -1,67 +1,64 @@
+class_name MainMenu
 extends CanvasLayer
 
-# --- ĐƯỜNG DẪN & HẰNG SỐ ---
+# 1. Khai báo các đường dẫn tài nguyên và file lưu trữ game
 const MAIN_SCENE_PATH = "res://scenes/main_scene.tscn" 
 const SAVE_PATH = "user://farm_save.tres"
 
-# --- CÁC NÚT BẤM CHÍNH TỪ VBOXCONTAINER ---
+# 2. Khai báo các nút bấm chính tại màn hình chờ
 @onready var start_game_button: Button = $MarginContainer/VBoxContainer/StartGameButton
 @onready var save_game_button: Button = $MarginContainer/VBoxContainer/SaveGameButton
 @onready var exit_game_button: Button = $MarginContainer/VBoxContainer/ExitGameButton
 @onready var guide_button: Button = $MarginContainer/VBoxContainer/GuideButton
 @onready var settings_button: Button = $MarginContainer/VBoxContainer/SettingsButton
 
-# --- CÁC BẢNG (PANELS) VÀ NÚT TẮT ---
+# 3. Khai báo các bảng hướng dẫn, cài đặt và nút điều hướng tương ứng
 @onready var guide_panel: Panel = $GuidePanel
 @onready var close_guide_btn: Button = $GuidePanel/CloseGuideButton
 
 @onready var settings_panel: VBoxContainer = $SettingsPanel
 @onready var back_settings_btn: Button = $SettingsPanel/BackButton
 
-# --- CÁC THÀNH PHẦN TRONG BẢNG CÀI ĐẶT ---
+# 4. Khai báo các thành phần điều chỉnh thông số trong bảng Cài đặt
 @onready var fullscreen_check: CheckBox = $SettingsPanel/FullscreenCheck
 @onready var resolution_option: OptionButton = $SettingsPanel/ResolutionOption
 @onready var volume_slider: HSlider = $SettingsPanel/VolumeSlider
 
 func _ready() -> void:
-	# ==========================================
-	# TÍNH NĂNG VIP: TỰ ĐỘNG GẮN ÂM THANH HOVER
-	# ==========================================
+	# 5. Tự động gắn hiệu ứng âm thanh khi di chuyển chuột qua các nút bấm
 	var all_buttons = [start_game_button, save_game_button, exit_game_button, guide_button, settings_button, close_guide_btn, back_settings_btn, fullscreen_check, resolution_option]
 	for btn in all_buttons:
 		btn.mouse_entered.connect(func(): AudioManager.play_sfx("ui_hover.ogg"))
 
-	# 1. Tự động kết nối các nút Menu chính (Không cần dùng tab Signals)
+	# 6. Kết nối các sự kiện nhấn nút cho hệ thống Menu chính
 	start_game_button.pressed.connect(_on_start_pressed)
 	save_game_button.pressed.connect(_on_continue_pressed)
 	guide_button.pressed.connect(_on_guide_pressed)
 	settings_button.pressed.connect(_on_settings_pressed)
 	exit_game_button.pressed.connect(_on_exit_pressed)
 	
-	# 2. Tự động kết nối nút Đóng/Quay lại của các bảng
+	# 7. Kết nối các nút Đóng/Quay lại cho các bảng chức năng
 	close_guide_btn.pressed.connect(_on_close_guide_pressed)
 	back_settings_btn.pressed.connect(_on_back_from_settings_pressed)
 	
-	# 3. Tự động kết nối chức năng trong bảng Cài Đặt 
+	# 8. Thiết lập các trình điều khiển trong bảng Cài đặt
 	fullscreen_check.toggled.connect(_on_fullscreen_toggled)
 	resolution_option.item_selected.connect(_on_resolution_selected)
 	volume_slider.value_changed.connect(_on_volume_changed)
 	
 	setup_resolution_dropdown()
 	
-	# Kiểm tra file Save để khóa/mở nút Tiếp tục
+	# 9. Kiểm tra sự tồn tại của file save để cập nhật trạng thái nút "Tiếp tục"
 	if ResourceLoader.exists(SAVE_PATH):
 		save_game_button.disabled = false
 	else:
 		save_game_button.disabled = true
 	
-	# Mặc định giấu 2 cái bảng đi khi mới vào sảnh
+	# Khởi tạo trạng thái ẩn cho các bảng phụ khi vào màn hình chính
 	guide_panel.hide()
 	settings_panel.hide()
 
-# ==========================================
-# LOGIC CHUYỂN BẢNG (BẬT/TẮT)
-# ==========================================
+# 10. Xử lý logic hiển thị/ẩn bảng Hướng dẫn và Cài đặt
 func _on_guide_pressed() -> void:
 	AudioManager.play_sfx("ui_click.ogg")
 	guide_panel.show()
@@ -78,33 +75,29 @@ func _on_back_from_settings_pressed() -> void:
 	AudioManager.play_sfx("ui_click.ogg")
 	settings_panel.hide()
 
-# ==========================================
-# LOGIC CHƠI / THOÁT
-# ==========================================
+# 11. Xử lý logic bắt đầu trò chơi mới (Xóa save cũ nếu có)
 func _on_start_pressed() -> void:
 	AudioManager.play_sfx("ui_click.ogg")
-	# Xóa save cũ đi
 	if ResourceLoader.exists(SAVE_PATH):
 		DirAccess.remove_absolute(SAVE_PATH)
 		
 	SaveGameManager.allow_load_on_start = false
 	if DayAndNightCycleManager:
-		DayAndNightCycleManager.set_time_to(1, 6, 0)
+		DayAndNightCycleManager.set_time_to(1, 6, 0) # Đặt thời gian khởi đầu mặc định
 		
 	get_tree().change_scene_to_file(MAIN_SCENE_PATH)
 
+# 12. Xử lý logic tiếp tục trò chơi từ file lưu trữ
 func _on_continue_pressed() -> void:
 	AudioManager.play_sfx("ui_click.ogg")
-	SaveGameManager.allow_load_on_start = true
+	SaveGameManager.allow_load_on_start = true # Bật cờ cho phép nạp dữ liệu khi vào scene
 	get_tree().change_scene_to_file(MAIN_SCENE_PATH)
 
 func _on_exit_pressed() -> void:
 	AudioManager.play_sfx("ui_click.ogg")
 	get_tree().quit()
 
-# ==========================================
-# LOGIC CÀI ĐẶT (ĐỒ HỌA & ÂM THANH)
-# ==========================================
+# 13. Cấu hình các tùy chọn độ phân giải màn hình
 func setup_resolution_dropdown() -> void:
 	resolution_option.clear()
 	resolution_option.add_item("1280 x 720 (Mặc định)")
@@ -112,6 +105,7 @@ func setup_resolution_dropdown() -> void:
 	resolution_option.add_item("1024 x 576 (Máy yếu)")
 	resolution_option.select(0)
 
+# 14. Điều chỉnh chế độ hiển thị Toàn màn hình
 func _on_fullscreen_toggled(toggled_on: bool) -> void:
 	AudioManager.play_sfx("ui_toggle.ogg")
 	if OS.has_feature("editor"):
@@ -122,6 +116,7 @@ func _on_fullscreen_toggled(toggled_on: bool) -> void:
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
+# 15. Thay đổi độ phân giải và căn giữa cửa sổ
 func _on_resolution_selected(index: int) -> void:
 	AudioManager.play_sfx("ui_toggle.ogg")
 	if OS.has_feature("editor"): return
@@ -133,16 +128,17 @@ func _on_resolution_selected(index: int) -> void:
 	fullscreen_check.button_pressed = false
 	DisplayServer.window_set_size(screen_size)
 	
-	# Căn cửa sổ ra giữa màn hình
+	# Tính toán vị trí để đưa cửa sổ vào chính giữa màn hình người dùng
 	var screen_id = DisplayServer.window_get_current_screen()
 	var screen_center = DisplayServer.screen_get_position(screen_id) + DisplayServer.screen_get_size(screen_id) / 2
 	var window_center = DisplayServer.window_get_size() / 2
 	DisplayServer.window_set_position(screen_center - window_center)
 
+# 16. Quản lý âm lượng tổng và trạng thái Mute
 func _on_volume_changed(value: float) -> void:
 	var bus_index = AudioServer.get_bus_index("Master")
 	if value <= 0.001:
-		AudioServer.set_bus_volume_db(bus_index, -80.0)
+		AudioServer.set_bus_volume_db(bus_index, -80.0) # Ép âm lượng xuống mức thấp nhất
 		AudioServer.set_bus_mute(bus_index, true)
 	else:
 		AudioServer.set_bus_mute(bus_index, false)

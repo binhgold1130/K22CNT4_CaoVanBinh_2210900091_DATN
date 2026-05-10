@@ -23,7 +23,7 @@ func _ready() -> void:
 	# 2. Sinh ra một cái Camera riêng chuyên để quay phim ở Menu
 	menu_camera = Camera2D.new()
 	
-	# [ĐÃ SỬA LỖI Ở ĐÂY] Phải add Camera vào Map TRƯỚC!
+	# Phải add Camera vào Map TRƯỚC!
 	add_child(menu_camera) 
 	
 	# Sau khi add vào rồi mới được phép bật nó lên

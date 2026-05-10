@@ -1,6 +1,5 @@
 extends Node
 
-# [MỚI THÊM CỰC KỲ QUAN TRỌNG] 
 # Biến này để Main Menu báo cho Main Scene biết là "Ê, load game cho tao!"
 var allow_load_on_start: bool = false
 
