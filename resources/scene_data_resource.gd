@@ -14,3 +14,6 @@ extends Resource
 
 # 4. Quản lý các ô đất đã cày (Tilled Soil)
 @export var saved_tilled_soil: Array[TileDataResource] = []
+
+#5. Quản lý túi đồ sau khi vào tiếp tục 
+@export var saved_inventory: Dictionary = {}

@@ -52,6 +52,9 @@ func save_level_data() -> void:
 			saved_soil_array.append(tile_data)
 		scene_data.saved_tilled_soil = saved_soil_array
 
+	# Lấy túi đồ hiện tại đút vào Resource trước khi đóng gói save
+	scene_data.saved_inventory = InventoryManager.items.duplicate()
+
 	# 7. Ghi toàn bộ dữ liệu vừa thu thập vào tài nguyên lưu trữ
 	if save_data_component != null:
 		save_data_component.save_data_resource = scene_data
@@ -69,6 +72,12 @@ func load_level_data() -> void:
 		player.global_position = scene_data.player_pos
 
 	DayAndNightCycleManager.set_time_to(scene_data.day, scene_data.hour, scene_data.minute)
+
+	# [THÊM MỚI]. Kiểm tra xem file save có túi đồ không, nếu có thì đè ngược lại vào InventoryManager
+	if not scene_data.saved_inventory.is_empty():
+		InventoryManager.items = scene_data.saved_inventory.duplicate()
+		# BẮT BUỘC BÁO CÁO CHO UI: Phát loa báo cho Giao diện vẽ lại số lượng item
+		InventoryManager.inventory_updated.emit()
 
 	# 9. Làm sạch cánh đồng cũ và tái tạo lại cây trồng từ dữ liệu
 	if crop_fields != null:
