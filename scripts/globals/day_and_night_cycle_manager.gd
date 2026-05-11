@@ -12,17 +12,24 @@ const MINUTES_PER_HOUR = 60.0
 # 3. Thông số điều khiển tốc độ và lưu trữ thời gian hiện tại
 @export var game_speed: float = 1.0 # Tốc độ trôi thời gian (1.0 là mặc định)
 
+@export_category("Thời gian Bắt đầu (New Game)")
+@export var start_day: int = 1
+@export var start_hour: int = 6
+@export var start_minute: int = 00
+
 var current_day: int = 1
 var current_hour: int = 0   
-var current_minute: int = 0
-var total_minutes: float = 0.0 # Tổng thời gian tích lũy (dùng để tính toán mọi thứ)
+
+var current_minute: int = -1 
+var total_minutes: float = 0.0 
 
 var is_time_loaded: bool = false 
 
 func _ready() -> void:
-	# 4. Mặc định khởi tạo ngày mới nếu không có dữ liệu lưu trữ (Save game)
+
+	# 4. Mặc định khởi tạo ngày mới bằng biến cấu hình thay vì viết cứng số
 	if not is_time_loaded:
-		set_time_to(1, 0, 0)
+		set_time_to(start_day, start_hour, start_minute)
 
 # 5. Hàm ép thời gian về một mốc cụ thể (ví dụ: dùng khi ngủ dậy sáng hôm sau)
 func set_time_to(day: int, hour: int, minute: int) -> void:
@@ -59,7 +66,7 @@ func _update_time_logic() -> void:
 		current_minute = new_minute
 		time_tick.emit(current_day, current_hour, current_minute)
 
-# 11. Chỉnh thời gian trôi nhanh/chậm (ví dụ: đứng yên thì trôi chậm, ngủ thì trôi nhanh)
+# 11. Chỉnh thời gian trôi nhanh/chậm 
 func set_game_speed(speed: float) -> void:
 	game_speed = speed
 	speed_changed.emit(game_speed)

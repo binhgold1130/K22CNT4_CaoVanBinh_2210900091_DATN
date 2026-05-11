@@ -83,7 +83,8 @@ func _on_start_pressed() -> void:
 		
 	SaveGameManager.allow_load_on_start = false
 	if DayAndNightCycleManager:
-		DayAndNightCycleManager.set_time_to(1, 6, 0) # Đặt thời gian khởi đầu mặc định
+		DayAndNightCycleManager.set_time_to(DayAndNightCycleManager.start_day,
+		DayAndNightCycleManager.start_hour, DayAndNightCycleManager.start_minute) 
 		
 	get_tree().change_scene_to_file(MAIN_SCENE_PATH)
 

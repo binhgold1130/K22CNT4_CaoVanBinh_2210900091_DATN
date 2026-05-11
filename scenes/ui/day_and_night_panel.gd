@@ -13,6 +13,8 @@ func _ready() -> void:
 	# 3. Kết nối tín hiệu cập nhật thời gian từ trình quản lý chu kỳ Ngày/Đêm (Autoload)
 	DayAndNightCycleManager.time_tick.connect(_on_time_tick)
 	
+	_on_time_tick(DayAndNightCycleManager.current_day,
+	 DayAndNightCycleManager.current_hour, DayAndNightCycleManager.current_minute)
 	# 4. Thiết lập sự kiện nhấn nút để thay đổi tốc độ trôi của thời gian trong game
 	normal_btn.pressed.connect(func(): DayAndNightCycleManager.set_game_speed(1.0))
 	fast_btn.pressed.connect(func(): DayAndNightCycleManager.set_game_speed(50.0))

@@ -73,7 +73,7 @@ func load_level_data() -> void:
 
 	DayAndNightCycleManager.set_time_to(scene_data.day, scene_data.hour, scene_data.minute)
 
-	# [THÊM MỚI]. Kiểm tra xem file save có túi đồ không, nếu có thì đè ngược lại vào InventoryManager
+	# . Kiểm tra xem file save có túi đồ không, nếu có thì đè ngược lại vào InventoryManager
 	if not scene_data.saved_inventory.is_empty():
 		InventoryManager.items = scene_data.saved_inventory.duplicate()
 		# BẮT BUỘC BÁO CÁO CHO UI: Phát loa báo cho Giao diện vẽ lại số lượng item
